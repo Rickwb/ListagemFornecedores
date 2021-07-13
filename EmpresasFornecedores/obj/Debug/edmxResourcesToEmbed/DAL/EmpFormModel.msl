@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProjetoEmpresasModelStoreContainer" CdmEntityContainer="ProjetoEmpresasEntities">
+    <EntitySetMapping Name="Empresa">
+      <EntityTypeMapping TypeName="ProjetoEmpresasModel.Empresa">
+        <MappingFragment StoreEntitySet="Empresa">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NomeFantasia" ColumnName="NomeFantasia" />
+          <ScalarProperty Name="CNPJ" ColumnName="CNPJ" />
+          <ScalarProperty Name="UF" ColumnName="UF" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FornecedorPF">
+      <EntityTypeMapping TypeName="ProjetoEmpresasModel.FornecedorPF">
+        <MappingFragment StoreEntitySet="FornecedorPF">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+          <ScalarProperty Name="FornecedorNome" ColumnName="FornecedorNome" />
+          <ScalarProperty Name="FornecedorCPF" ColumnName="FornecedorCPF" />
+          <ScalarProperty Name="FornecedorRG" ColumnName="FornecedorRG" />
+          <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
+          <ScalarProperty Name="DataCadastro" ColumnName="DataCadastro" />
+          <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FornecedorPJ">
+      <EntityTypeMapping TypeName="ProjetoEmpresasModel.FornecedorPJ">
+        <MappingFragment StoreEntitySet="FornecedorPJ">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+          <ScalarProperty Name="FornecedorNome" ColumnName="FornecedorNome" />
+          <ScalarProperty Name="FornecedorCNPJ" ColumnName="FornecedorCNPJ" />
+          <ScalarProperty Name="DataCadastro" ColumnName="DataCadastro" />
+          <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

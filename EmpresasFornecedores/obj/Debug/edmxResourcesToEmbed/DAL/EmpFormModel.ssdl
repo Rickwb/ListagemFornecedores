@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProjetoEmpresasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Empresa">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NomeFantasia" Type="varchar" MaxLength="100" />
+    <Property Name="CNPJ" Type="varchar" MaxLength="14" Nullable="false" />
+    <Property Name="UF" Type="varchar" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="FornecedorPF">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmpresaId" Type="int" />
+    <Property Name="FornecedorNome" Type="varchar" MaxLength="100" />
+    <Property Name="FornecedorCPF" Type="varchar" MaxLength="11" />
+    <Property Name="FornecedorRG" Type="varchar" MaxLength="11" />
+    <Property Name="DataNascimento" Type="date" />
+    <Property Name="DataCadastro" Type="datetime" />
+    <Property Name="Telefone" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="FornecedorPJ">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmpresaId" Type="int" />
+    <Property Name="FornecedorNome" Type="varchar" MaxLength="100" />
+    <Property Name="FornecedorCNPJ" Type="varchar" MaxLength="14" />
+    <Property Name="DataCadastro" Type="datetime" />
+    <Property Name="Telefone" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <Association Name="FK__Fornecedo__Empre__38996AB5">
+    <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+    <End Role="FornecedorPJ" Type="Self.FornecedorPJ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FornecedorPJ">
+        <PropertyRef Name="EmpresaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Fornecedo__Empre__3B75D760">
+    <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+    <End Role="FornecedorPF" Type="Self.FornecedorPF" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FornecedorPF">
+        <PropertyRef Name="EmpresaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProjetoEmpresasModelStoreContainer">
+    <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FornecedorPF" EntityType="Self.FornecedorPF" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FornecedorPJ" EntityType="Self.FornecedorPJ" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Fornecedo__Empre__38996AB5" Association="Self.FK__Fornecedo__Empre__38996AB5">
+      <End Role="Empresa" EntitySet="Empresa" />
+      <End Role="FornecedorPJ" EntitySet="FornecedorPJ" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Fornecedo__Empre__3B75D760" Association="Self.FK__Fornecedo__Empre__3B75D760">
+      <End Role="Empresa" EntitySet="Empresa" />
+      <End Role="FornecedorPF" EntitySet="FornecedorPF" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
