@@ -1,0 +1,70 @@
+﻿@model IEnumerable<EmpresasFornecedores.DAL.FornecedorPF>
+
+@{
+    ViewBag.Title = "PFIndex";
+}
+<link href="~/Content/TablesStyles.css" rel="stylesheet" />
+<h2>Todos os Fornecedores PF</h2>
+
+
+<table class="table table-bordered" style="border:solid; border-width:medium">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FornecedorNome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FornecedorCPF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FornecedorRG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataNascimento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataCadastro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empresa.NomeFantasia)
+        </th>
+        <th>
+            @Html.ActionLink("Create New", "Create")
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FornecedorNome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FornecedorCPF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FornecedorRG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataNascimento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataCadastro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empresa.NomeFantasia)
+        </td>
+        <td class="tableElemts">
+            <button class="btn-success" onclick="location.href = '@Url.Action("Edit", new { id=item.ID})';">Editar</button> |
+            <button class="btn-warning" onclick=" location.href = '@Url.Action("EmpresaFornecedor","Empresas",new { id = item.ID })';">Detalhes</button> |
+            <button class="btn-danger" onclick=" location.href = '@Url.Action("Delete",new { id = item.ID })';"> Delete</button> |
+           
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,51 @@
+﻿@model  EmpresasFornecedores.DAL.Empresa
+
+@{
+    ViewBag.Title = "EmpresaFornecedores";}
+
+<h2>@Html.DisplayFor(modelItem => modelItem.NomeFantasia)</h2>
+
+
+<table class="table table-bordered" style="border:solid; border-width:medium">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NomeFantasia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CNPJ)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UF)
+        </th>
+        <th>
+            @Html.ActionLink("Adicionar Empresa", "Create")
+        </th>
+        
+    </tr>
+
+
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => modelItem.NomeFantasia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => modelItem.CNPJ)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => modelItem.UF)
+        </td>
+        <td>
+            <button class="btn-success" onclick="location.href = '@Url.Action("Edit", new { id= Model.Id})';">Editar</button> |
+            <button class="btn-warning" onclick=" location.href = '@Url.Action("EmpresaFornecedores",new { id = Model.Id })';">Detalhes</button> |
+            <button class="btn-danger" onclick=" location.href = '@Url.Action("Delete",new { id = Model.Id })';"> Delete</button> 
+        </td>
+    </tr>
+    
+
+   
+    
+    
+</table>
+    @Html.Action("_ListarFornecedoresPJPorEmpresa",new {empresaId=Model.Id })
+
+    @Html.Action("_ListarFornecedoresPFPorEmpresa",new {empresaId=Model.Id })

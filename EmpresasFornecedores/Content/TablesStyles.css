@@ -1,0 +1,18 @@
+﻿
+td{
+    text-align:center;
+}
+
+th{
+    text-align:center;
+}
+
+h2{
+    padding-bottom:20px;
+    float:inherit;
+    margin-bottom:10px;
+}
+
+div .th{
+    margin-left:2px;
+}

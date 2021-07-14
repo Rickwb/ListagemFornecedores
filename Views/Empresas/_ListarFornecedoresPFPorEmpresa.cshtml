@@ -1,0 +1,106 @@
+﻿@model IEnumerable<EmpresasFornecedores.DAL.FornecedorPF>
+<link href="~/Content/TablesStyles.css" rel="stylesheet" />
+<h3>Forncedores Pessoa Física</h3>
+<div>
+    <div style="text-align:right;  margin-bottom:10px;">
+        @using (Html.BeginForm())
+        {
+            <div>
+
+            <table class="table">
+                <tr>
+                    <th colspan="2">
+                        <p>Pesquisar por </p>
+                    </th>
+                    <th></th>
+                    <th colspan="2">
+                        <p>Nome:</p>
+                    </th>
+                    <th>
+                        <input type="radio" value="Nome" name="Rdb" />
+                    </th>
+                    <th> </th>
+                    <th colspan="2">
+                        <p>Cpf:</p>
+                    </th>
+                    <th align="center">
+                        <input type="radio" value="Cnpj" name="Rdb" />
+                    </th>
+                    <th> </th>
+                    <th align="center"><p>Data de Cadastro:</p></th>
+                    <th>
+                        <input type="radio" value="DataCadastro" name="Rdb" />
+                    </th>
+                    <th> </th>
+                    <th align="right">
+                        @Html.TextBox("pesquisa2")
+                        <button type="submit" value="pesquisa2" >Pesquisar</button>
+                    </th>
+                </tr>
+                
+            </table>
+            </div>
+        }
+    </div>
+</div>
+<table class="table table-bordered" style="border:solid; border-width:medium">
+    <tr>
+        <th>
+            <p>Nome</p>
+        </th>
+        <th>
+            <p>CPF</p>
+        </th>
+        <th>
+            <p>RG</p>
+        </th>
+        <th>
+            <p>Data de Nascimento</p>
+        </th>
+        <th>
+            <p>Data de Cadastro</p>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </th>
+        <th>
+            Empresa Contratante
+        </th>
+        <th>
+            @Html.ActionLink("Adicionar Novo", "Create","FornecedorPFs")
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FornecedorNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FornecedorCPF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FornecedorRG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataNascimento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataCadastro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Empresa.NomeFantasia)
+            </td>
+            <td>
+                <button class="btn-success" onclick="location.href = '@Url.Action("Edit","FornecedorPFs", new { id= item.ID})';">Editar</button> |
+                <button class="btn-warning" onclick=" location.href = '@Url.Action("PFIndex","FornecedorPFs",new { id = item.ID })';">Detalhes</button> |
+                <button class="btn-danger" onclick=" location.href = '@Url.Action("Delete","FornecedorPFs",new { id = item.ID })';"> Delete</button> |
+            </td>
+        </tr>
+    }
+
+</table>

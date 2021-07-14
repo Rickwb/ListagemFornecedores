@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<link href="~/Content/IndexStyles/HomeIndex.css" rel="stylesheet" />
+<script src="~/Content/IndexStyles/IndexJS.js"></script>
+<div class="container " style="vertical-align:middle; position:relative; margin-top:100px" >
+
+    <div class="row col-md-6">
+        <img src="~/Imagens/BludataLogo.png" href="https://www.bludata.com.br"  />
+    </div>
+    <div class="row col-md-6">
+
+        <h2 id="mudaCor">Bem vindo a Página</h2>
+        <div class="container">
+            <div class="row ">
+                <ul>
+
+                    <li class="linhas">
+                        <div class="col ">
+                            @Html.ActionLink("Adicionar Empresa", "Create", "Empresas")
+                        </div>
+                    </li>
+                    <li class="linhas">
+                        <div class="col ">
+                            @Html.ActionLink("Listar Empresas", "EmpIndex", "Empresas")
+                        </div>
+                    </li>
+                    <li class="linhas">
+
+                        <div class="col">
+                            @Html.ActionLink("Adicionar Fornecedor PF para Empresa", "Create", "FornecedorPFs")
+                        </div>
+                    </li>
+                    <li class="linhas">
+                        <div class="col">
+                            @Html.ActionLink("Adicionar Fornecedor PJ para Empresa", "Create", "FornecedorPJs")
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+

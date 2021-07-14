@@ -1,0 +1,51 @@
+﻿@model IEnumerable<EmpresasFornecedores.DAL.Empresa>
+
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Content/IndexStyles/IndexJS.js"></script>
+<link href="~/Content/IndexStyles/ListarStyles.css" rel="stylesheet" />
+<link href="~/Content/TablesStyles.css" rel="stylesheet" />
+<h2>Lista de Empresas</h2>
+
+
+<table class="table table-bordered" style="border:solid; border-width:medium">
+    <tr>
+        <th class="tableElemts">
+            @Html.DisplayNameFor(model => model.NomeFantasia)
+        </th>
+        <th class="tableElemts">
+            @Html.DisplayNameFor(model => model.CNPJ)
+        </th>
+        <th class="tableElemts">
+            @Html.DisplayNameFor(model => model.UF)
+        </th>
+        <th>
+            @Html.ActionLink("Adicionar Empresa", "Create")
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="tableElemts">
+                @Html.DisplayFor(modelItem => item.NomeFantasia)
+            </td>
+            <td class="tableElemts">
+                @Html.DisplayFor(modelItem => item.CNPJ)
+            </td>
+            <td class="tableElemts">
+                @Html.DisplayFor(modelItem => item.UF)
+            </td>
+            <td class="tableElemts">
+                <button class="btn-success" onclick="location.href = '@Url.Action("Edit", new { id=item.Id})';">Editar</button> |
+                <button class="btn-warning" onclick=" location.href = '@Url.Action("EmpresaFornecedores",new { id = item.Id })';">Detalhes</button> |
+                <button class="btn-danger" onclick=" location.href = '@Url.Action("Delete",new { id = item.Id })';"> Delete</button> |
+                <button class="btn-info" onclick=" location.href = '@Url.Action("Create","FornecedorPJs")';">Adicionar Fornecedor PJ</button> |
+                <button class="btn-info" onclick=" location.href = '@Url.Action("Create", "FornecedorPFs")';">Adicionar Fornecedor PF</button>
+            </td>
+        </tr>
+
+    }
+
+</table>

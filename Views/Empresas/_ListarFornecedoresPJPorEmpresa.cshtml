@@ -1,0 +1,88 @@
+﻿@model IEnumerable<EmpresasFornecedores.DAL.FornecedorPJ>
+<link href="~/Content/TablesStyles.css" rel="stylesheet" />
+<h3>Fornecedores Pessoa Jurídica</h3>
+
+<div style="text-align:right; align-items:center; margin-bottom:10px;">
+    @using (Html.BeginForm())
+    {
+        <table class="table">
+            <tr>
+                <th colspan="2">
+                    <p>Pesquisar por </p>
+                </th>
+                <th></th>
+                <th colspan="2">
+                    <p>Nome:</p>
+                </th>
+                <th>
+                    <input type="radio" value="Nome" name="Rdb" />
+                </th>
+                <th> </th>
+                <th colspan="2">
+                    <p>Cnpj:</p>
+                </th>
+                <th align="center">
+                    <input type="radio" value="Cnpj" name="Rdb" />
+                </th>
+                <th> </th>
+                <th align="center"><p>Data de Cadastro:</p></th>
+                <th>
+                    <input type="radio" value="DataCadastro" name="Rdb" />
+                </th>
+                <th> </th>
+                <th align="right">
+                    @Html.TextBox("pesquisa1")
+                    <button type="submit">Pesquisar</button>
+                </th>
+            </tr>
+
+        </table>}
+</div>
+<table class="table table-bordered" style="border:solid; border-width:medium">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FornecedorNome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FornecedorCNPJ)
+        </th>
+        <th>
+            Data de Cadastro
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </th>
+        <th>
+            Empresa Contratante
+        </th>
+        <th>
+            @Html.ActionLink("Adicionar Novo", "Create","FornecedorPJs")
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FornecedorNome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FornecedorCNPJ)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataCadastro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empresa.NomeFantasia)
+        </td>
+        <td>
+            <button class="btn-success" onclick="location.href = '@Url.Action("Edit","FornecedorPJs", new { id= item.ID})';">Editar</button> |
+            <button class="btn-warning" onclick=" location.href = '@Url.Action("PJIndex","FornecedorPJs",new { id = item.ID })';">Detalhes</button> |
+            <button class="btn-danger" onclick=" location.href = '@Url.Action("Delete","FornecedorPJs",new { id = item.ID })';"> Delete</button>
+        </td>
+    </tr>
+}
+
+</table>
